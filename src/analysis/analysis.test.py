@@ -1,5 +1,9 @@
 from analysis import *
 
+# -----------------------------
+# Example Usage for UserJournal
+# -----------------------------
+
 uj = UserJournal(phone_number="183402")
 
 s0 = Submission(phone_number="183402", text="I am really loving this")
@@ -13,9 +17,9 @@ print(uj)
 # example print single submission
 print(s0)
 
-# ------------------
-# Test for Analsysis
-# ------------------
+# ---------------------------
+# Example Usage for Analsysis
+# ---------------------------
 
 r = Report(uj)
 
