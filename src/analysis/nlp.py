@@ -1,12 +1,12 @@
 from analysis import *
 import nltk
 from nltk import word_tokenize
+nltk.download('punkt')
 
 def process(uj):
     sentence = uj.submissions
     tokens = word_tokenize(sentence[1].text)
     print(tokens)
-
 
 uj = UserJournal(phone_number="183402")
 

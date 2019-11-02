@@ -35,10 +35,6 @@ class Report:
 
     # using Analysis class add to list of analysis to run to generate report
     def add_analysis(self,analysis):
-        if (type(analysis) is not Analysis):
-            print("Not using analysis class, make sure you are adding a Analysis object")
-            return
-
         # run function and set result to the result dictionary under the result
         self.analysis_list.append(analysis)
 
@@ -47,15 +43,11 @@ class Report:
         for analysis in self.analysis_list:
             self.results[analysis.result_name] = analysis.run(self.user_journal)
 
-    def print(self):
+    def log(self):
         print("====================")
         print("Report for: {}".format(self.user_journal.phone_number))
         print("====================")
         print(self.results)
-
-# exmaple analysis function
-def example_analysis_function(user_journal):
-    return 1
 
 class Analysis:
     """General class template for anaysis on user journal"""
