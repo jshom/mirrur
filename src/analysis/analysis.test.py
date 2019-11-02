@@ -25,8 +25,9 @@ print(s0)
 r = Report(uj)
 
 a = Analysis(function=heuristics.example, result_name="example_result")
-a = Analysis(function=heuristics.determiner_heuristic, result_name="example_result")
+b = Analysis(function=heuristics.determiner_heuristic, result_name="example_result")
 r.add_analysis(a)
+r.add_analysis(b)
 
 r.generate()
-r.print()
+r.log()
