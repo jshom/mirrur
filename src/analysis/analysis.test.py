@@ -25,9 +25,16 @@ print(s0)
 r = Report(uj)
 
 a = Analysis(function=heuristics.example, result_name="example_result")
+<<<<<<< HEAD
 b = Analysis(function=heuristics.polarization_heuristic, result_name="example_result")
+=======
+b = Analysis(function=heuristics.determiner_heuristic, result_name="example_resultb")
+>>>>>>> 4ba449948551929362027a218eb771a7f88bf0cb
 r.add_analysis(a)
 r.add_analysis(b)
 
 r.generate()
 r.log()
+
+r.compress()
+
