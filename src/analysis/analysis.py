@@ -2,13 +2,12 @@ from datetime import datetime
 
 class Submission:
     """Class for text submittion"""
-    def __init__(self, phone_number, text):
-        self.phone_number = phone_number
+    def __init__(self, text):
         self.text = text
         self.timestamp = datetime.now()
 
     def __str__(self):
-        return "phone_number: {}\ntext: {}\ntimestamp: {}".format(self.phone_number, self.text, self.timestamp)
+        return "text: {}\ntimestamp: {}".format(self.text, self.timestamp)
 
 class UserJournal:
     """Time series class"""
