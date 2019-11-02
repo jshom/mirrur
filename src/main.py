@@ -1,6 +1,6 @@
 from flask import Flask, request
 from twilio.twiml.messaging_response import Message, MessagingResponse
-from analysis import *
+from mirrur.src.analysis import analysis as an
 
 app = Flask(__name__)
 
@@ -17,16 +17,15 @@ def sms():
     number = request.form['From']
     message_body = request.form['Body']
 
-    sub = Submission(phone_number=number, text=message_body)
-    UJ = UserJournal(phone_number=number)
+    sub = an.Submission(phone_number=number, text=message_body)
+    UJ = an.UserJournal(phone_number=number)
 
     UJ.add_submission(submission=sub)
 
     UJ_Dict[number] = UJ
 
-
     resp = MessagingResponse()
-    resp.message('Hello {}, you said: {}'.format(number, message_body))
+    resp.message('number:{} \n UJ: {}'.format(number, UJ_Dict[number]))
     return str(resp)
 
 if __name__ == '__main__':
