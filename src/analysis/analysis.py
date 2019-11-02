@@ -34,6 +34,7 @@ class Report:
         self.analysis_list = []
         self.user_journal = user_journal
         self.results = {}
+        self.compressed_result = 0
 
     # using Analysis class add to list of analysis to run to generate report
     def add_analysis(self,analysis):
@@ -50,7 +51,13 @@ class Report:
         print("Report for: {}".format(self.user_journal.phone_number))
         print("====================")
         print(self.results)
-
+    
+    def compress(self):
+        for analysis in self.analysis_list:
+            average = self.results[analysis.result_name]
+        average = average/len(self.analysis_list)
+        self.compressed_result = average
+        
 class Analysis:
     """General class template for anaysis on user journal"""
     # leave time start and time end to do
