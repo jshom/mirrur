@@ -1,11 +1,13 @@
 from analysis import *
 import nltk
-from nltk import word_tokenize
 
 def process(uj):
     sentence = uj.submissions
-    tokens = word_tokenize(sentence[1].text)
-    print(tokens)
+    for i in sentence:
+        tokens = nltk.word_tokenize(i.text)
+        print(tokens)
+        tagged = nltk.pos_tag(tokens)
+        print(tagged)
 
 
 uj = UserJournal(phone_number="183402")

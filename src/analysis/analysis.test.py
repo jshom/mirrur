@@ -1,4 +1,4 @@
-from mirrur.src.analysis.analysis import *
+from analysis import *
 
 # -----------------------------
 # Example Usage for UserJournal
