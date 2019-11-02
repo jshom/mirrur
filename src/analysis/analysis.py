@@ -34,16 +34,27 @@ class Report:
         self.user_journal = user_journal
         self.results = {}
 
-    # using Analysis class
-    def add_analysis(analysis):
-        # run function and set result to the result dictionary under the result
-        self[analysis.result_name] = analysis.run(self.user_journal)
-        print(type(analysis))
-        if (type(analysis) != "")
+    # using Analysis class add to list of analysis to run to generate report
+    def add_analysis(self,analysis):
+        if (type(analysis) is not Analysis):
+            print("Not using analysis class, make sure you are adding a Analysis object")
+            return
 
+        # run function and set result to the result dictionary under the result
+        self.analysis_list.append(analysis)
+
+    def generate(self):
+        # run function and set result to the result dictionary under the result
+        for analysis in self.analysis_list:
+            self.results[analysis.result_name] = analysis.run(self.user_journal)
+
+    def print(self):
+        print("====================")
+        print("Report for: {}".format(self.user_journal.phone_number))
+        print("====================")
+        print(self.results)
 
 # exmaple analysis function
-
 def example_analysis_function(user_journal):
     return 1
 
@@ -51,10 +62,9 @@ class Analysis:
     """General class template for anaysis on user journal"""
     # leave time start and time end to do
     #   partial time series analysis if time allows
-    def __init__(self, function, time_start=None, time_end=None):
-        self.user_journal = user_journal
+    def __init__(self, function, result_name, time_start=None, time_end=None):
         self.function = function
         self.result_name = result_name
 
-    def run(user_journal):
-        return self.analysis_function(user_journal)
+    def run(self, user_journal):
+        return self.function(user_journal)

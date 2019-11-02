@@ -17,5 +17,10 @@ print(s0)
 # Test for Analsysis
 # ------------------
 
-r = Report(user_journal)
+r = Report(uj)
+
 a = Analysis(function=example_analysis_function, result_name="example_result")
+r.add_analysis(a)
+
+r.generate()
+r.print()
