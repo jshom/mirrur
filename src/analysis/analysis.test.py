@@ -1,4 +1,4 @@
-from mirrur.src.analysis.analysis import *
+from analysis import *
 
 # -----------------------------
 # Example Usage for UserJournal
@@ -6,8 +6,8 @@ from mirrur.src.analysis.analysis import *
 
 uj = UserJournal(phone_number="183402")
 
-s0 = Submission(phone_number="183402", text="I am really loving this")
-s1 = Submission(phone_number="183402", text="I can't stand this right now.")
+s0 = Submission(text="I am really loving this")
+s1 = Submission(text="I can't stand this right now.")
 
 uj.add_submission(s0)
 uj.add_submission(s1)

@@ -1,12 +1,10 @@
 from flask import Flask, request
 from twilio.twiml.messaging_response import Message, MessagingResponse
-from mirrur.src.analysis import analysis as an
+from analysis import analysis as an
 
 app = Flask(__name__)
 
-
 UJ_Dict = dict()
-
 
 @app.route('/')
 def home():
