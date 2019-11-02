@@ -13,6 +13,8 @@ def process(uj):
     #for word in tokens:
     #    sum += dic[word]
     #return sum
+
+
 uj = UserJournal(phone_number="183402")
 
 s0 = Submission(text="I am really loving this") 
