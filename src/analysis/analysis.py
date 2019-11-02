@@ -53,10 +53,6 @@ class Report:
         print("====================")
         print(self.results)
 
-# exmaple analysis function
-def example_analysis_function(user_journal):
-    return 1
-
 class Analysis:
     """General class template for anaysis on user journal"""
     # leave time start and time end to do
