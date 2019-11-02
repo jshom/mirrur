@@ -15,9 +15,11 @@ class UserJournal:
     def __init__(self, phone_number):
         self.submissions = []
         self.phone_number = phone_number
+        self.full_text = ""
 
     def add_submission(self, submission):
         self.submissions.append(submission)
+        self.full_text += submission.text + ' ' + '\n'
 
     def __str__(self):
         str = ""
