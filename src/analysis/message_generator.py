@@ -17,6 +17,6 @@ def message_generator(value):
         message = "Keep it going! can't wait to hear from you tomorrow"
     elif value >= 0.6 and value < 0.7:
         message = "Keep it going! can't wait to hear from you tomorrow"
-    elif value >= 0.7 and value <= 0.8:
-        message = "Sounds like you're having a good day"
+    elif value >= 0.7:
+        message = "Sounds like you're having a good day! See you tomorrow!"
     return message
