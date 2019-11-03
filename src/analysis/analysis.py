@@ -45,19 +45,27 @@ class Report:
         # run function and set result to the result dictionary under the result
         for analysis in self.analysis_list:
             self.results[analysis.result_name] = analysis.run(self.user_journal)
+        # average all results to map to [0-1]
+        self.compress()
 
     def log(self):
         print("====================")
         print("Report for: {}".format(self.user_journal.phone_number))
         print("====================")
         print(self.results)
-    
+
     def compress(self):
+        sum = 0
         for analysis in self.analysis_list:
-            average = self.results[analysis.result_name]
-        average = average/len(self.analysis_list)
+            sum += self.results[analysis.result_name]
+        average = sum/len(self.analysis_list)
         self.compressed_result = average
-        
+
+    def parseData(self, number):
+        return '%.3f' % number
+
+
+
 class Analysis:
     """General class template for anaysis on user journal"""
     # leave time start and time end to do

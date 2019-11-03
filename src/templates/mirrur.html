@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/stylesheet_for_web.css') }}">
+    <title>Mirrur</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" crossorigin="anonymous"></script>
+
+</head>
+
+<div class="body">
+  <br><br>
+  <h1 class='text-center'>Mirrur Usage Report:</h1>
+  <p class='text-center'>Number: {{report.user_journal.phone_number}}</p>
+  <div class="container">
+      <div class="col-md-6">
+        <h2>Journal</h2>
+        <hr></hr>
+
+        <div class="submission">
+          {% for submission in report.user_journal.submissions %}
+          <div class="submission">
+            <span class='timestamp-label'>{{ submission.timestamp }}</span>
+            <p>{{ submission.text }}</p>
+          </div>
+          {% endfor %}
+        </div>
+
+      </div>
+      <div class="col-md-6">
+        <h2>Automated Analysis</h2>
+        <hr></hr>
+        <p><b>Sentiment Analysis Result:</b> {{ report.parseData(report.results["general_sentiment"]) }}</p>
+        <i>Aggregate positivity word values for entire journal</i>
+        <p><b>Latest Sentiment Analysis Result:</b> {{ report.parseData(report.results["latest_sentiment"]) }}</p>
+        <i>Aggregate positivity word values for last entry</i>
+        <p><b>Polarization Result:</b> {{ report.parseData(report.results["polarization"]) }}</p>
+
+      </div>
+  </div>
+</div>
+
+  <!-- <body id="background">
+
+      <div class="header">
+          {{ report.user_journal.phone_number }}
+      </div>
+
+      <div class="main_collection">
+          {% for submission in report.user_journal.submissions %}
+          <p>{{ submission.text }}</p>
+          {% endfor %}
+      </div>
+
+  </body> -->
+</html>

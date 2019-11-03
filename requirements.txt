@@ -1,3 +1,5 @@
 nltk
 flask
 twilio
+gcloud
+google-auth-oauthlib

@@ -1,0 +1,39 @@
+#background{
+  background-color: gray;
+}
+
+.breathe{
+    background-color: #36c45c;
+}
+
+.main_collection{
+    background-color: azure;
+    color: rgba(98,98,95,0.9);
+    font-family: 'Verdana';
+    font-size: large;
+    margin-left: 20px;
+    margin-right: 550px;
+    margin-top: 60px;
+    padding-top: 20px;
+    padding-left: 10px;
+    height: 600px;
+}
+
+.secondary_collection{
+    background-color: #32ad56;
+    color: aliceblue;
+}
+
+.header{
+    color: rgba(240, 255, 255, 0.98);
+    font-size: xx-large;
+    margin-left: 35px;
+    margin-top: 10px;
+    position: absolute;
+    top: 4px;
+}
+
+.timestamp-label {
+  font-size: 10px;
+  color: graph;
+}
