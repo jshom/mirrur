@@ -21,14 +21,32 @@ def home():
     return 'Hello, World'
 
 UJ = an.UserJournal(phone_number="test000")
-UJ.add_submission(submission=an.Submission("It feels good today. Most of the activities done and the weather was good. I had enough sleep last night so woke up ready for all activities in the college. I was in the library quite early to finish up the many assignments given yesterday. The classes have been interesting with tutors covering much of the syllabus work and at the same time allowing us the time to relax. I caught up with old friends during the lunch hour and planned for a date over the weekend. We have known another for quite some time since our time in high school. They were always helpful in tough moments. The afternoon was interesting too, spending time in music class. I am making a nice progress in knowing to play the guitar. The day ends with catching up with my parents at home who have been on vacation for a week now."))
-UJ.add_submission(submission=an.Submission("The day is so tiresome. Being a Monday, the tutors have many expectations from us. They pick up from previous classes and all the homework done over the weekend. By the time of class, I had not finished the psychology essay so I had to request for more time from the lecturer. Thank God he accepted my plea. Now I have the next 24 hours to finish this challenging essay. Besides, I went bicycle riding. It is always good to exercise often but today I did too much and I can feel the aching muscles. With more work from my tutor, I feel like someone should just offer a hand of assistance. But I will manage."))
 report = an.Report(user_journal=UJ)
+
 report.add_analysis(analysis_dict["polarization"])
 report.add_analysis(analysis_dict["general_sentiment"])
 report.add_analysis(analysis_dict["latest_sentiment"])
+
+UJ.add_submission(submission=an.Submission("It feels good today. Most of the activities done and the weather was good. I had enough sleep last night so woke up ready for all activities in the college. I was in the library quite early to finish up the many assignments given yesterday. The classes have been interesting with tutors covering much of the syllabus work and at the same time allowing us the time to relax. I caught up with old friends during the lunch hour and planned for a date over the weekend. We have known another for quite some time since our time in high school. They were always helpful in tough moments. The afternoon was interesting too, spending time in music class. I am making a nice progress in knowing to play the guitar. The day ends with catching up with my parents at home who have been on vacation for a week now."))
 report.generate()
+
+UJ.add_submission(submission=an.Submission("The day is so tiresome. Being a Monday, the tutors have many expectations from us. They pick up from previous classes and all the homework done over the weekend. By the time of class, I had not finished the psychology essay so I had to request for more time from the lecturer. Thank God he accepted my plea. Now I have the next 24 hours to finish this challenging essay. Besides, I went bicycle riding. It is always good to exercise often but today I did too much and I can feel the aching muscles. With more work from my tutor, I feel like someone should just offer a hand of assistance. But I will manage."))
+report.generate()
+
+UJ.add_submission(submission=an.Submission("Things are awful. Don't know if this app will ever work"))
+report.generate()
+
+UJ.add_submission(submission=an.Submission("It feels good today. Most of the activities done and the weather was good. I had enough sleep last night so woke up ready for all activities in the college. I was in the library quite early to finish up the many assignments given yesterday. The classes have been interesting with tutors covering much of the syllabus work and at the same time allowing us the time to relax. I caught up with old friends during the lunch hour and planned for a date over the weekend. We have known another for quite some time since our time in high school. They were always helpful in tough moments. The afternoon was interesting too, spending time in music class. I am making a nice progress in knowing to play the guitar. The day ends with catching up with my parents at home who have been on vacation for a week now."))
+report.generate()
+
+UJ.add_submission(submission=an.Submission("The day is so tiresome. Being a Monday, the tutors have many expectations from us. They pick up from previous classes and all the homework done over the weekend. By the time of class, I had not finished the psychology essay so I had to request for more time from the lecturer. Thank God he accepted my plea. Now I have the next 24 hours to finish this challenging essay. Besides, I went bicycle riding. It is always good to exercise often but today I did too much and I can feel the aching muscles. With more work from my tutor, I feel like someone should just offer a hand of assistance. But I will manage."))
+report.generate()
+
+UJ.add_submission(submission=an.Submission("Things are awful. Don't know if this app will ever work"))
+report.generate()
+
 Report_Dict['test-test'] = report
+print(report.history)
 
 @app.route('/ui/report/<string:report_id>')
 def get_report_ui(report_id):
@@ -84,7 +102,7 @@ def sms():
     UJ = UJ_Dict[number]
     UJ.add_submission(submission=sub)
     # add analysis to use in report
-    report = an.Report(user_journal=UJ)
+    report = Report_Dict.get(md5(str(number).encode('utf-8')).hexdigest(), an.Report(user_journal=UJ))
     report.add_analysis(analysis_dict["polarization"])
     report.add_analysis(analysis_dict["general_sentiment"])
     report.add_analysis(analysis_dict["latest_sentiment"])
@@ -93,7 +111,7 @@ def sms():
     report.log()
     # save report with ts of last submission
     print(sub.timestamp)
-    report_id = md5(str(sub.timestamp).encode('utf-8')).hexdigest()
+    report_id = md5(str(number).encode('utf-8')).hexdigest()
     print("report_id: {}".format(report_id))
     Report_Dict[report_id] = report
     # generate message to send based on happiness probabiltiy (0-1)
