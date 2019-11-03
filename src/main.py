@@ -7,6 +7,12 @@ app = Flask(__name__)
 
 UJ_Dict = dict()
 
+analysis_dict = {
+    "polarization": an.Analysis(heuristics.polarization_heuristic, "polarization"),
+    "general_sentiment": an.Analysis(heuristics.general_sentiment_analysis, "general_sentiment"),
+    "latest_sentiment": an.Analysis(heuristics.latest_sentiment_analysis, "latest_sentiment")
+}
+
 @app.route('/')
 def home():
     return 'Hello, World'
@@ -32,9 +38,25 @@ def sms():
         report.compress()
         message = mes.message_generator(report.compressed_result)
         UJ_Dict[number] = UJ
+    sub = an.Submission(text=message_body)
+    UJ = an.UserJournal(phone_number=number)
+
+    UJ.add_submission(submission=sub)
+
+    report = an.Report(user_journal=UJ)
+
+    # add analysis to use
+    report.add_analysis(analysis_dict["polarization"])
+    report.add_analysis(analysis_dict["general_sentiment"])
+    report.add_analysis(analysis_dict["latest_sentiment"])
+
+    report.generate()
+    message = mes.message_generator(report.compressed_result)
+
+    UJ_Dict[number] = UJ
 
     resp = MessagingResponse()
-    resp.message(message)
+    resp.message('number:{} \n message: {}'.format(number, message))
     return str(resp)
 
 if __name__ == '__main__':

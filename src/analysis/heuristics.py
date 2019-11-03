@@ -1,7 +1,7 @@
 # from determiner_heuristic import determiner_heuristic
 import nltk as nltk
 import math as math
-from gcp_interface import sentiment_analysis
+from analysis.gcp_interface import sentiment_analysis
 nltk.download('averaged_perceptron_tagger')
 nltk.download('universal_tagset')
 
