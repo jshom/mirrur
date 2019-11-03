@@ -1,13 +1,9 @@
 #background{
-    background-color: rgba(0, 0, 0, 0.96);
-    color: azure;
+  background-color: gray;
 }
-
-
 
 .breathe{
     background-color: #36c45c;
-
 }
 
 .main_collection{
@@ -35,4 +31,9 @@
     margin-top: 10px;
     position: absolute;
     top: 4px;
+}
+
+.timestamp-label {
+  font-size: 10px;
+  color: graph;
 }
