@@ -10,13 +10,13 @@ def message_generator(value):
     elif value >= 0.2 and value < 0.3:
         message = "Are you okay? You are not alone in how you're feeling. Try immersing yourself with good company"
     elif value >= 0.3 and value < 0.4:
-        message = "Keep fighting. can't wait to hear from you tomorrow"
+        message = "Keep on fighting. It will get better!"
     elif value >= 0.4 and value < 0.5:
-        message = "Keep it going! can't wait to hear from you tomorrow"
+        message = "Keep it going! It's going to be alright. Tomorrow is a new day!"
     elif value >= 0.5 and value < 0.6:
-        message = "Nice! can't wait to hear from you tomorrow"
+        message = "Nice! Can't wait to hear from you tomorrow!"
     elif value >= 0.6 and value < 0.7:
-        message = "Sounds good! can't wait to hear from you tomorrow"
+        message = "Sounds good! Can't wait to hear from you tomorrow!"
     elif value >= 0.7:
         message = "Sounds like you're having a good day! See you tomorrow!"
     return message
