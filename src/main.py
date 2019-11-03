@@ -100,7 +100,7 @@ def sms():
         return str(resp)
 
     # clear if error
-    if (message == "Clear" or message == "clear"):
+    if (message_body == "Clear" or message_body == "clear"):
         # new user journal
         UJ_Dict[number] = an.UserJournal(phone_number=number)
 
