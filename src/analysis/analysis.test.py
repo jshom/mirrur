@@ -1,4 +1,5 @@
 from analysis import *
+import heuristics as heuristics
 
 # -----------------------------
 # Example Usage for UserJournal
@@ -23,8 +24,12 @@ print(s0)
 
 r = Report(uj)
 
-a = Analysis(function=example_analysis_function, result_name="example_result")
+a = Analysis(function=heuristics.example, result_name="example_result")
+b = Analysis(function=heuristics.determiner_heuristic, result_name="example_resultb")
 r.add_analysis(a)
+r.add_analysis(b)
 
 r.generate()
-r.print()
+r.log()
+
+r.compress()

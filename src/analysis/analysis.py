@@ -15,9 +15,11 @@ class UserJournal:
     def __init__(self, phone_number):
         self.submissions = []
         self.phone_number = phone_number
+        self.full_text = ""
 
     def add_submission(self, submission):
         self.submissions.append(submission)
+        self.full_text += submission.text + ' ' + '\n'
 
     def __str__(self):
         str = ""
@@ -32,13 +34,10 @@ class Report:
         self.analysis_list = []
         self.user_journal = user_journal
         self.results = {}
+        self.compressed_result = 0
 
     # using Analysis class add to list of analysis to run to generate report
     def add_analysis(self,analysis):
-        if (type(analysis) is not Analysis):
-            print("Not using analysis class, make sure you are adding a Analysis object")
-            return
-
         # run function and set result to the result dictionary under the result
         self.analysis_list.append(analysis)
 
@@ -47,15 +46,17 @@ class Report:
         for analysis in self.analysis_list:
             self.results[analysis.result_name] = analysis.run(self.user_journal)
 
-    def print(self):
+    def log(self):
         print("====================")
         print("Report for: {}".format(self.user_journal.phone_number))
         print("====================")
         print(self.results)
 
-# exmaple analysis function
-def example_analysis_function(user_journal):
-    return 1
+    def compress(self):
+        for analysis in self.analysis_list:
+            average = self.results[analysis.result_name]
+        average = average/len(self.analysis_list)
+        self.compressed_result = average
 
 class Analysis:
     """General class template for anaysis on user journal"""
