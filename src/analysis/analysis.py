@@ -6,6 +6,9 @@ class Submission:
         self.text = text
         self.timestamp = datetime.now()
 
+    def get_readable_timestamp(self):
+        return self.timestamp.strftime("%b %d %Y")
+
     def __str__(self):
         return "text: {}\ntimestamp: {}".format(self.text, self.timestamp)
 
@@ -36,6 +39,7 @@ class Report:
         self.results = {}
         self.compressed_result = 0
         self.history = []
+        self.compressed_result_history = []
 
     # using Analysis class add to list of analysis to run to generate report
     def add_analysis(self,analysis):
@@ -50,6 +54,7 @@ class Report:
         self.compress()
         # add to history
         self.history.append(dict(self.results))
+        self.compressed_result_history.append(self.compressed_result)
 
     def log(self):
         print("====================")
@@ -63,6 +68,9 @@ class Report:
             sum += self.results[analysis.result_name]
         average = sum/len(self.analysis_list)
         self.compressed_result = average
+
+    def get_history_avg(self):
+        return self.compressed_result_history
 
     def get_history_for_result(self, result_name):
         arr = []

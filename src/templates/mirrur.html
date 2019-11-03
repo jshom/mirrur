@@ -26,7 +26,7 @@
         <div class="submission">
           {% for submission in report.user_journal.submissions %}
           <div class="submission">
-            <span class='timestamp-label'>{{ submission.timestamp }}</span>
+            <span class='timestamp-label'>{{ submission.get_readable_timestamp() }}</span>
             <p>{{ submission.text }}</p>
           </div>
           {% endfor %}
@@ -66,6 +66,15 @@
                   pointDotRadius: 1,
                   pointRadius: 1,
                   lineTension: 0.1
+                },
+                {
+                  label: "Average (Positivity) Index",
+                  borderColor: "#2c3d3e",
+                  data: {{report.get_history_avg()}},
+                  lineWidth: 100,
+                  pointDotRadius: 1,
+                  pointRadius: 1,
+                  lineTension: 0.1
                 }
               ],
               labels: {{report.get_labels()}}
@@ -87,12 +96,16 @@
         <hr>
         <h3>Latest Entry:</h3>
         <p><b>Sentiment Analysis Result:</b> {{ report.parseData(report.results["general_sentiment"]) }}</p>
-        <i>Aggregate positivity word values for entire journal</i>
         <p><b>Latest Sentiment Analysis Result:</b> {{ report.parseData(report.results["latest_sentiment"]) }}</p>
-        <i>Aggregate positivity word values for last entry</i>
         <p><b>Polarization Result:</b> {{ report.parseData(report.results["polarization"]) }}</p>
+        <br>
+        <h4>Test Info</h4>
+        <p>Sentiment Analysis: Total positivity of weighted words summed</p>
+        <p>Latest Sentiment Analysis: Sentiment of last entry</p>
+        <p>Polarization Analysis: Weighted use of absolutist words in adjectives, aderbs and determiners</p>
       </div>
   </div>
+  <p class="text-center"><br>Built @ HACK RPI Fall 2019<br></p>
 </div>
 
 </html>
