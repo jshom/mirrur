@@ -72,6 +72,7 @@ def sms():
     if first_time:
         # create user journal for first timers
         UJ = an.UserJournal(phone_number=number)
+        UJ.add_submission(submission=sub)
         UJ_Dict[number] = UJ # note don't add first text
         # message for first timers
         message = "Hey, from what I can tell, this is your first time using Mirrur. That's ok. \n Mirrur is a place for you to jot down any of your thoughts. Mirrur is here to listen. For now, let me know how your day went."
