@@ -26,7 +26,7 @@ def polarization_heuristic(user_journal):
     # find proportion of polarized determiners to all determiners
     # return that minus 1
     # print(user_journal.full_text)
-    tagged_words = nltk.pos_tag(user_journal.full_text.split(' '))
+    tagged_words = nltk.pos_tag(user_journal.full_text.tokenize())
     word_pairs = [(word, nltk.tag.map_tag('en-ptb', 'universal', tag)) for word, tag in tagged_words]
 
     potential_absolutist_word = []
