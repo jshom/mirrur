@@ -1,11 +1,24 @@
 # from determiner_heuristic import determiner_heuristic
 import nltk as nltk
 import math as math
+from gcp_interface import sentiment_analysis
 nltk.download('averaged_perceptron_tagger')
 nltk.download('universal_tagset')
 
 def example(user_journal):
-    return 0;
+    return 0
+
+def latest_sentiment_analysis(user_journal):
+    # returns [-1 to 1]
+    score = sentiment_analysis(user_journal.submissions[-1].text)
+    # map to [0 to 1]
+    return (float(score+1)/2)
+
+def general_sentiment_analysis(user_journal):
+    # returns [-1 to 1]
+    score = sentiment_analysis(user_journal.full_text)
+    # map to [0 to 1]
+    return (float(score+1)/2)
 
 def polarization_heuristic(user_journal):
     # score (0-1) 0 is full helplessness and 1 is super happy
