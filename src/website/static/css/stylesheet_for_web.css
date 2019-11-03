@@ -1,0 +1,26 @@
+#background{
+    background-color: #35bf5b;
+}
+
+.main_collection{
+    background-color: aliceblue;
+    color: rgba(98,98,95,0.9);
+    margin-left: 20px;
+    margin-right: 550px;
+    margin-top: 60px;
+    height: 600px;
+}
+
+.secondary_collection{
+    background-color: #32ad56;
+    color: aliceblue;
+}
+
+.header{
+    color: rgba(98,98,95,0.9);
+    font-size: large;
+    margin-left: 35px;
+    margin-top: 20px;
+    position: absolute;
+    top: 4px;
+}
