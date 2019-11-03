@@ -1,15 +1,14 @@
 from analysis import *
 from flask import Flask, request
 from twilio.twiml.messaging_response import Message, MessagingResponse
-def message_generator(value):
+def message_generator(value, report_id=None):
     message = ""
     if value >= 0 and value < 0.1:
-        message = "It sounds like you're in need of some help. If you need someone to talk to call the National Suicide Hotline: 1-800-273-8255"
+        message = "It sounds like you're in need of some help. If you need someone to talk to call the National Suicide Hotline: 1-800-273-8255. (https://mirrur.xyz/ui/report/" + report_id + ")"
     elif value >= 0.1 and value < 0.2:
-        # Mirrur recommends--> cop out
-        message = "It sounds like you could be feeling better. Mirrur recomends you find someone to talk to"
+        message = "It sounds like you could be feeling better. Mirrur recomends you find someone to talk to. (https://mirrur.xyz/ui/report/" + report_id + ")"
     elif value >= 0.2 and value < 0.3:
-        message = "Are you okay? You are not alone in how you're feeling. Try immersing yourself with good company"
+        message = "Are you okay? You are not alone in how you're feeling. Try immersing yourself with good company. (https://mirrur.xyz/ui/report/" + report_id + ")"
     elif value >= 0.3 and value < 0.4:
         message = "Keep fighting. can't wait to hear from you tomorrow"
     elif value >= 0.4 and value < 0.5:

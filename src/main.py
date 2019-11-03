@@ -114,12 +114,11 @@ def sms():
     print(sub.timestamp)
     report_id = md5(str(number).encode('utf-8')).hexdigest()
     print("report_id: {}".format(report_id))
+    print("avg: {}".format(report.compressed_result))
     Report_Dict[report_id] = report
     # generate message to send based on happiness probabiltiy (0-1)
-    msg = mes.message_generator(report.compressed_result)
+    msg = mes.message_generator(report.compressed_result, report_id)
     # return the message
-
-    # TODO: when you hit below 0.3 send the report link
     resp = MessagingResponse()
     resp.message(msg)
     return str(resp)
