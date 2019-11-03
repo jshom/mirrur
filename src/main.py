@@ -2,10 +2,17 @@ from flask import Flask, request
 from twilio.twiml.messaging_response import Message, MessagingResponse
 from analysis import analysis as an
 from analysis import message_generator as mes
+from analysis import heuristics as heuristics
 
 app = Flask(__name__)
 
 UJ_Dict = dict()
+
+analysis_dict = {
+    "polarization": an.Analysis(heuristics.polarization_heuristic, "polarization"),
+    "general_sentiment": an.Analysis(heuristics.general_sentiment_analysis, "general_sentiment"),
+    "latest_sentiment": an.Analysis(heuristics.latest_sentiment_analysis, "latest_sentiment")
+}
 
 @app.route('/')
 def home():
@@ -22,6 +29,12 @@ def sms():
     UJ.add_submission(submission=sub)
 
     report = an.Report(user_journal=UJ)
+
+    # add analysis to use
+    report.add_analysis(analysis_dict["polarization"])
+    report.add_analysis(analysis_dict["general_sentiment"])
+    report.add_analysis(analysis_dict["latest_sentiment"])
+
     report.generate()
     report.compress()
     message = mes.message_generator(report.compressed_result)
