@@ -1,13 +1,25 @@
 #background{
-    background-color: #35bf5b;
+    background-color: rgba(0, 0, 0, 0.96);
+    color: azure;
+}
+
+
+
+.breathe{
+    background-color: #36c45c;
+
 }
 
 .main_collection{
-    background-color: aliceblue;
+    background-color: azure;
     color: rgba(98,98,95,0.9);
+    font-family: 'Verdana';
+    font-size: large;
     margin-left: 20px;
     margin-right: 550px;
     margin-top: 60px;
+    padding-top: 20px;
+    padding-left: 10px;
     height: 600px;
 }
 
@@ -17,10 +29,10 @@
 }
 
 .header{
-    color: rgba(98,98,95,0.9);
-    font-size: large;
+    color: rgba(240, 255, 255, 0.98);
+    font-size: xx-large;
     margin-left: 35px;
-    margin-top: 20px;
+    margin-top: 10px;
     position: absolute;
     top: 4px;
 }

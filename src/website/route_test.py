@@ -3,6 +3,8 @@ from datetime import datetime
 
 app = Flask(__name__)
 
+# Check for UUID --> https://www.jitsejan.com/python-and-javascript-in-flask.html #35bf5b
+# Command + Shift + R --> reset the cache
 
 @app.route('/')
 def start():
