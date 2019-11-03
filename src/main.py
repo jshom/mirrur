@@ -17,8 +17,8 @@ analysis_dict = {
 }
 
 @app.route('/')
-def home():
-    return 'Hello, World'
+def landing():
+    return render_template("landing.html")
 
 UJ = an.UserJournal(phone_number="test000")
 report = an.Report(user_journal=UJ)
