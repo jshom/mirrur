@@ -57,10 +57,9 @@ def sms():
     if first_time:
         # create user journal for first timers
         UJ = an.UserJournal(phone_number=number)
-        UJ.add_submission(submission=sub)
-        UJ_Dict[number] = UJ
+        UJ_Dict[number] = UJ # note don't add first text
         # message for first timers
-        message = "Hey, from what I can tell, this is your first time using Mirrur. That's ok. \n Mirrur is a place for you to jot down any of your thoughts. Mirrur is here to listen."
+        message = "Hey, from what I can tell, this is your first time using Mirrur. That's ok. \n Mirrur is a place for you to jot down any of your thoughts. Mirrur is here to listen. For now, let me know how your day went."
         # send message
         resp = MessagingResponse()
         resp.message(message)
@@ -83,13 +82,12 @@ def sms():
     print("report_id: {}".format(report_id))
     Report_Dict[report_id] = report
     # generate message to send based on happiness probabiltiy (0-1)
-    message = mes.message_generator(report.compressed_result)
+    msg = mes.message_generator(report.compressed_result)
     # return the message
 
     # TODO: when you hit below 0.3 send the report link
-    
     resp = MessagingResponse()
-    resp.message('number:{} \n message: {}'.format(number, message))
+    resp.message(msg)
     return str(resp)
 
 if __name__ == '__main__':
