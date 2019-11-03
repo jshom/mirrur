@@ -18,7 +18,13 @@ document = types.Document(
 sentiment = client.analyze_sentiment(document=document).document_sentiment
 
 print('Text: {}'.format(text))
-print('Sentiment: {}, {}'.format(sentiment.score, sentiment.magnitude))
+print('Sentiment: {}, {}'.format(score_algo(sentiment.score), sentiment.magnitude))
+
+def score_algo(sentiment_score):
+    sa = sentiment_score + 1
+    return (float(sa)/2)
+
+
 
 """
 
