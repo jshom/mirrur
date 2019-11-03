@@ -76,6 +76,9 @@ class Report:
             arr.append(i)
         return arr
 
+    def parseData(self, number):
+        return '%.3f' % number
+
 class Analysis:
     """General class template for anaysis on user journal"""
     # leave time start and time end to do

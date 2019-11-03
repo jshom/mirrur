@@ -86,26 +86,13 @@
         </script>
         <hr>
         <h3>Latest Entry:</h3>
-        <p><b>Sentiment Analysis Result:</b> {{ report.results["general_sentiment"] }}</p>
-        <p><b>Latest Sentiment Analysis Result:</b> {{ report.results["latest_sentiment"] }}</p>
-        <p><b>Polarization Result:</b> {{ report.results["polarization"] }}</p>
-        <hr>
-        <p><b>Averaged Result:</b> {{ report.compressed_result }}</p>
+        <p><b>Sentiment Analysis Result:</b> {{ report.parseData(report.results["general_sentiment"]) }}</p>
+        <i>Aggregate positivity word values for entire journal</i>
+        <p><b>Latest Sentiment Analysis Result:</b> {{ report.parseData(report.results["latest_sentiment"]) }}</p>
+        <i>Aggregate positivity word values for last entry</i>
+        <p><b>Polarization Result:</b> {{ report.parseData(report.results["polarization"]) }}</p>
       </div>
   </div>
 </div>
 
-  <!-- <body id="background">
-
-      <div class="header">
-          {{ report.user_journal.phone_number }}
-      </div>
-
-      <div class="main_collection">
-          {% for submission in report.user_journal.submissions %}
-          <p>{{ submission.text }}</p>
-          {% endfor %}
-      </div>
-
-  </body> -->
 </html>
