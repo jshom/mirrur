@@ -32,11 +32,11 @@
       <div class="col-md-6">
         <h2>Automated Analysis</h2>
         <hr></hr>
-        <p><b>Sentiment Analysis Result:</b> {{ report.results["general_sentiment"] }}</p>
+        <p><b>Sentiment Analysis Result:</b> {{ report.parseData(report.results["general_sentiment"]) }}</p>
         <i>Aggregate positivity word values for entire journal</i>
-        <p><b>Latest Sentiment Analysis Result:</b> {{ report.results["latest_sentiment"] }}</p>
+        <p><b>Latest Sentiment Analysis Result:</b> {{ report.parseData(report.results["latest_sentiment"]) }}</p>
         <i>Aggregate positivity word values for last entry</i>
-        <p><b>Polarization Result:</b> {{ report.results["polarization"] }}</p>
+        <p><b>Polarization Result:</b> {{ report.parseData(report.results["polarization"]) }}</p>
 
       </div>
   </div>
