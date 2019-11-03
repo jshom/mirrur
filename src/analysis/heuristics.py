@@ -1,6 +1,7 @@
 # from determiner_heuristic import determiner_heuristic
 import nltk as nltk
 import math as math
+from nltk.tokenize import WordPunctTokenizer
 from analysis.gcp_interface import sentiment_analysis
 nltk.download('averaged_perceptron_tagger')
 nltk.download('universal_tagset')
@@ -26,7 +27,8 @@ def polarization_heuristic(user_journal):
     # find proportion of polarized determiners to all determiners
     # return that minus 1
     # print(user_journal.full_text)
-    tagged_words = nltk.pos_tag(user_journal.full_text.tokenize())
+    # tagged_words = nltk.pos_tag(user_journal.full_text.split(' '))
+    tagged_words = nltk.pos_tag(WordPunctTokenizer().tokenize(user_journal.full_text))
     word_pairs = [(word, nltk.tag.map_tag('en-ptb', 'universal', tag)) for word, tag in tagged_words]
 
     potential_absolutist_word = []
