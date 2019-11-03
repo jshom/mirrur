@@ -6,6 +6,7 @@ def message_generator(value):
     if value >= 0 and value < 0.1:
         message = "It sounds like you're in need of some help. If you need someone to talk to call the National Suicide Hotline: 1-800-273-8255"
     elif value >= 0.1 and value < 0.2:
+        # Mirrur recommends--> cop out
         message = "It sounds like you could be feeling better. Mirrur recomends you find someone to talk to"
     elif value >= 0.2 and value < 0.3:
         message = "Are you okay? You are not alone in how you're feeling. Try immersing yourself with good company"
