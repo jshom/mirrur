@@ -36,7 +36,6 @@ def sms():
     report.add_analysis(analysis_dict["latest_sentiment"])
 
     report.generate()
-    report.compress()
     message = mes.message_generator(report.compressed_result)
 
     UJ_Dict[number] = UJ

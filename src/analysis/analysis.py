@@ -45,6 +45,8 @@ class Report:
         # run function and set result to the result dictionary under the result
         for analysis in self.analysis_list:
             self.results[analysis.result_name] = analysis.run(self.user_journal)
+        # average all results to map to [0-1]
+        self.compress()
 
     def log(self):
         print("====================")
