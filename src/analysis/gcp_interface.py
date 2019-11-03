@@ -11,7 +11,7 @@ client = language.LanguageServiceClient.from_service_account_file(AUTH_TOKEN_PAT
 def sentiment_analysis(text):
     # GCP request doc
     document = types.Document(
-        content=text,
+        content=str(text).encode('utf-8'),
         type=enums.Document.Type.PLAIN_TEXT)
 
     # Detects the sentiment of the text
