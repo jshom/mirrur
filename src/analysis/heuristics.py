@@ -48,6 +48,9 @@ def polarization_heuristic(user_journal):
     # how many words would be significant (40% of determiners)
     threshold = math.ceil(len(potential_absolutist_word) * 0.40)
 
+    if (threshold == 0):
+        return 0.5 # neutral
+
     if (amount_used_in_text/threshold > 1):
         return 0.0;
     else:

@@ -55,9 +55,10 @@ class Report:
         print(self.results)
 
     def compress(self):
+        sum = 0
         for analysis in self.analysis_list:
-            average = self.results[analysis.result_name]
-        average = average/len(self.analysis_list)
+            sum += self.results[analysis.result_name]
+        average = sum/len(self.analysis_list)
         self.compressed_result = average
 
 class Analysis:
