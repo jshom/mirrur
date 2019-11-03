@@ -8,11 +8,15 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" crossorigin="anonymous"></script>
 
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js" charset="utf-8"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+
 </head>
 
 <div class="body">
   <br><br>
-  <h1 class='text-center'>Mirrur Usage Report:</h1>
+  <h1 class='text-center'>Mirrur Report:</h1>
   <p class='text-center'>Number: {{report.user_journal.phone_number}}</p>
   <div class="container">
       <div class="col-md-6">
@@ -22,7 +26,7 @@
         <div class="submission">
           {% for submission in report.user_journal.submissions %}
           <div class="submission">
-            <span class='timestamp-label'>{{ submission.timestamp }}</span>
+            <span class='timestamp-label'>{{ submission.get_readable_timestamp() }}</span>
             <p>{{ submission.text }}</p>
           </div>
           {% endfor %}
@@ -32,27 +36,76 @@
       <div class="col-md-6">
         <h2>Automated Analysis</h2>
         <hr></hr>
+        <canvas id="myChart" width="500" height="400"></canvas>
+        <script>
+        var ctx = document.getElementById('myChart').getContext('2d');
+        var myLineChart = new Chart(ctx, {
+            type: 'line',
+            data: {
+              datasets: [
+                {
+                  label: "Trailing Sentiment Index",
+                  borderColor: "#3e95cd",
+                  data: {{report.get_history_for_result('general_sentiment')}},
+                  pointDotRadius: 1,
+                  pointRadius: 1,
+                  lineTension: 0.1
+                },
+                {
+                  label: "Latest Sentiment Index",
+                  borderColor: "#279eaa",
+                  data: {{report.get_history_for_result('latest_sentiment')}},
+                  pointDotRadius: 1,
+                  pointRadius: 1,
+                  lineTension: 0.1
+                },
+                {
+                  label: "Polarization Index",
+                  borderColor: "#5782e2",
+                  data: {{report.get_history_for_result('polarization')}},
+                  pointDotRadius: 1,
+                  pointRadius: 1,
+                  lineTension: 0.1
+                },
+                {
+                  label: "Average (Positivity) Index",
+                  borderColor: "#2c3d3e",
+                  data: {{report.get_history_avg()}},
+                  lineWidth: 100,
+                  pointDotRadius: 1,
+                  pointRadius: 1,
+                  lineTension: 0.1
+                }
+              ],
+              labels: {{report.get_labels()}}
+            },
+            options: {
+              responsive: true,
+              maintainAspectRatio: true,
+              scales: {
+                  yAxes: [{
+                      ticks: {
+                        min: 0,
+                        max: 1
+                      }
+                  }]
+              }
+            }
+        });
+        </script>
+        <hr>
+        <h3>Latest Entry:</h3>
         <p><b>Sentiment Analysis Result:</b> {{ report.parseData(report.results["general_sentiment"]) }}</p>
-        <i>Aggregate positivity word values for entire journal</i>
         <p><b>Latest Sentiment Analysis Result:</b> {{ report.parseData(report.results["latest_sentiment"]) }}</p>
-        <i>Aggregate positivity word values for last entry</i>
         <p><b>Polarization Result:</b> {{ report.parseData(report.results["polarization"]) }}</p>
-
+        <br>
+        <h4>Test Info</h4>
+        <p>Sentiment Analysis: Total positivity of weighted words summed</p>
+        <p>Latest Sentiment Analysis: Sentiment of last entry</p>
+        <p>Polarization Analysis: Weighted use of absolutist words in adjectives, aderbs and determiners</p>
       </div>
   </div>
+  <p class="text-center"><br>Built @ HACK RPI Fall 2019<br></p>
 </div>
 
-  <!-- <body id="background">
-
-      <div class="header">
-          {{ report.user_journal.phone_number }}
-      </div>
-
-      <div class="main_collection">
-          {% for submission in report.user_journal.submissions %}
-          <p>{{ submission.text }}</p>
-          {% endfor %}
-      </div>
-
-  </body> -->
 </html>

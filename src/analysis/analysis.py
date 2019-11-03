@@ -6,6 +6,9 @@ class Submission:
         self.text = text
         self.timestamp = datetime.now()
 
+    def get_readable_timestamp(self):
+        return self.timestamp.strftime("%b %d %Y")
+
     def __str__(self):
         return "text: {}\ntimestamp: {}".format(self.text, self.timestamp)
 
@@ -35,6 +38,8 @@ class Report:
         self.user_journal = user_journal
         self.results = {}
         self.compressed_result = 0
+        self.history = []
+        self.compressed_result_history = []
 
     # using Analysis class add to list of analysis to run to generate report
     def add_analysis(self,analysis):
@@ -47,6 +52,9 @@ class Report:
             self.results[analysis.result_name] = analysis.run(self.user_journal)
         # average all results to map to [0-1]
         self.compress()
+        # add to history
+        self.history.append(dict(self.results))
+        self.compressed_result_history.append(self.compressed_result)
 
     def log(self):
         print("====================")
@@ -61,10 +69,23 @@ class Report:
         average = sum/len(self.analysis_list)
         self.compressed_result = average
 
+    def get_history_avg(self):
+        return self.compressed_result_history
+
+    def get_history_for_result(self, result_name):
+        arr = []
+        for point in self.history:
+            arr.append(point.get(result_name, None))
+        return arr
+
+    def get_labels(self):
+        arr = []
+        for i in range(len(self.history)):
+            arr.append(i)
+        return arr
+
     def parseData(self, number):
         return '%.3f' % number
-
-
 
 class Analysis:
     """General class template for anaysis on user journal"""
