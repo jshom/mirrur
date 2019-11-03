@@ -99,6 +99,11 @@ def sms():
         resp.message(message)
         return str(resp)
 
+    # clear if error
+    if (message == "Clear" or message == "clear"):
+        # new user journal
+        UJ_Dict[number] = an.UserJournal(phone_number=number)
+
     # common case
     UJ = UJ_Dict[number]
     UJ.add_submission(submission=sub)

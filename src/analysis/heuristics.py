@@ -37,7 +37,7 @@ def polarization_heuristic(user_journal):
             potential_absolutist_word.append(word_tag_pair[0]) # jush push the word, not
 
     # absolutist ADJ, DET & ADV
-    absolutist_words = ["all", "every", "never", "absolutely", "complete", "completely", "constant", "definetly", "entire", "ever", "full", "totally"]
+    absolutist_words = ["all", "every", "never", "absolutely", "complete", "completely", "constant", "definetly", "entire", "ever", "full", "totally", "endless"]
 
     amount_used_in_text = 0
     for word in absolutist_words:
