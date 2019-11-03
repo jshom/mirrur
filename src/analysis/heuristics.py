@@ -16,12 +16,12 @@ def polarization_heuristic(user_journal):
     tagged_words = nltk.pos_tag(user_journal.full_text.split(' '))
     word_pairs = [(word, nltk.tag.map_tag('en-ptb', 'universal', tag)) for word, tag in tagged_words]
 
-    determiners = []
+    potential_absolutist_word = []
     for word_tag_pair in word_pairs:
         # word[1] = Part of speech classified
         # RB = Determiners (Some, All, Few, etc., a)
         if (word_tag_pair[1] in ["DET","ADV", "ADJ"]):
-            determiners.append(word_tag_pair[0]) # jush push the word, not
+            potential_absolutist_word.append(word_tag_pair[0]) # jush push the word, not
 
     # absolutist ADJ, DET & ADV
     absolutist_words = ["all", "every", "never", "absolutely", "complete", "completely", "constant", "definetly", "entire", "ever", "full", "totally"]
@@ -29,12 +29,11 @@ def polarization_heuristic(user_journal):
     amount_used_in_text = 0
     for word in absolutist_words:
         if word in user_journal.full_text:
-            print(word)
             amount_used_in_text = amount_used_in_text + 1
 
 
-    # how many words would be significant (5% of text)
-    threshold = math.ceil(len(user_journal.full_text) * 0.05)
+    # how many words would be significant (40% of determiners)
+    threshold = math.ceil(len(potential_absolutist_word) * 0.40)
 
     if (amount_used_in_text/threshold > 1):
         return 0.0;
