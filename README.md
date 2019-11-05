@@ -24,7 +24,7 @@ With data coming from a text as an anonymous shared journalling platform, we col
 ## Pictures/Screenshots
 
 *Example Journal*
-![Example Journal](https://raw.githubusercontent.com/jshom/mirrur/master/images/demo-text.jpg)
+<img src="https://raw.githubusercontent.com/jshom/mirrur/master/images/demo-text.jpg" alt="Example Journal" style="zoom:25%;" />
 
 *Example Full Report*
 ![Example Full Report](https://raw.githubusercontent.com/jshom/mirrur/master/images/demo-report.jpg)
