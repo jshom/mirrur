@@ -1,7 +1,7 @@
 # Mirrur
 **Hack RPI Fall 2019 x Project Mirror**
 Assisted Journalling with NLP for Mental Health
-Wolfram Alpha Prize Winner 🎉
+Wolfram Award Winner 🎉
 
 ## Goal
 Help pre-depressive/hopeless behaviors through customized supportive messaging and, if necessary, provide a report to share with health care professional to find inflection points.
