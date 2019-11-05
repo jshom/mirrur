@@ -1,6 +1,7 @@
 # Mirrur
 **Hack RPI Fall 2019 x Project Mirror**
 Assisted Journalling with NLP for Mental Health
+
 Wolfram Award Winner 🎉
 
 ## Goal
