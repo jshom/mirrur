@@ -14,14 +14,17 @@ With data coming from a text as an anonymous shared journalling platform, we col
 
 *Note: Polarization was found to be highly predictive of hopeless behavior, for this reason we made sure to focus our efforts on here. It was a challenge weighting the index based on the amount of these determiners, adjectives and adverbs relative to the total count of these parts of speech in the body of text*
 
-## Pictures/Screenshots
-
-![Example Full Report](https://raw.githubusercontent.com/jshom/mirrur/master/images/demo-report.jpg)
-
-
 ## Tools & Technologies
 - Python NLTK Package for Parts of Speech Tagging (Polarization Index)
 - Google Cloud Platofrm Natural Language API (Sentiment Analysis)
 - Twilio SMS API
 - DigitalOcean (VM & Networking)
 - .xyz domain (https://mirrur.xyz) [will most likely be down later]
+
+## Pictures/Screenshots
+
+*Example Journal*
+![Example Journal](https://raw.githubusercontent.com/jshom/mirrur/master/images/demo-text.jpg)
+
+*Example Full Report*
+![Example Full Report](https://raw.githubusercontent.com/jshom/mirrur/master/images/demo-report.jpg)
