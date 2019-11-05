@@ -9,6 +9,9 @@ Help pre-depressive/hopeless behaviors through customized supportive messaging a
 
 With data coming from a text as an anonymous shared journalling platform, we collected natural language from users from text messages and responded with proper texts in accordance with their hopelessness index (0-1). At lower levels, we referred users to mental health specialists with an online anonymous report they could access. This report offered the ability to find changes in hopelessness over time.
 
+**Presentation Link**
+https://docs.google.com/presentation/d/1ld6yPPlV6nb9XL2jQKcTsk6SC9VIfFV61sRsD5DCPRI/edit#slide=id.p4
+
 **NLP Heuristics (Averaged for hopelessness index)**
 - Absolutism/Polarization Index (0-1 Index for usage of words like "always", "never", "completely")
 - Global Sentiment (0-1 Positivity Word Values Summed and mapped to 0-1 score)
@@ -30,3 +33,9 @@ With data coming from a text as an anonymous shared journalling platform, we col
 
 *Example Full Report*
 ![Example Full Report](https://raw.githubusercontent.com/jshom/mirrur/master/images/demo-report.jpg)
+
+## Contributors
+- Brian Wu
+- Andres Orbe
+- Justin Kwong
+- Jacob Shomstein
